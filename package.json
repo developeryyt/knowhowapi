@@ -8,6 +8,7 @@
     "start": "node ./src/main.js",
     "dev-start": "ENV=development node ./src/main.js",
     "dev:start": "ENV=development nodemon ./src/main.js",
+    "dev:build": "env-cmd -f .env.develoment react-scripts build",
     "prod:start": "PORT=7100 nodemon ./src/main.js"
   },
   "devDependencies": {
