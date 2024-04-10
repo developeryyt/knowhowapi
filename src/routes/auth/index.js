@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.post('/login', async (req, res, res) => {
+router.post('/login', async (req, res, next) => {
     const params = await req.body;
     console.log(params)
 
@@ -27,3 +27,17 @@ router.post('/register', async (req, res, next) => {
 
     res.json(response)
 })
+
+
+router.get('/hello', (req, res, next) => {
+    const name = req.query.name || 'WORLD';
+
+    res.json({
+        message: `Hello ${name}`
+    })
+
+
+})
+
+
+module.exports = router;
