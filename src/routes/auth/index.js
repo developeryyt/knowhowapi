@@ -3,6 +3,7 @@ const router = express.Router();
 
 router.post('/login', async (req, res, res) => {
     const params = await req.body;
+    console.log(params)
 
     try {
 
@@ -10,6 +11,7 @@ router.post('/login', async (req, res, res) => {
 
     }
 
+    res.json('hello')
 })
 
 
