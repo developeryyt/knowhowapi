@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./src/main.js",
+    "local:start": "env-cmd -f .env.local nodemon ./src/main.js",
     "dev-start": "env-cmd -f .env.development node ./src/main.js",
     "dev:start": "env-cmd -f .env.development nodemon ./src/main.js",
     "prod:start": "PORT=7100 nodemon ./src/main.js"
