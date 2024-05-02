@@ -11,21 +11,13 @@ console.log('process.env.ENV: ', process.env.NODE_ENV);
 const { createServer } = require('http');
 const { Server } = require('socket.io')
 
-const httpServer = createServer()
-const io = new Server(httpServer, {})
 
-io.on("connection", (socket) => {
 
-    console.log(socket, 'Socket 통신')
-    console.log('socket 연결')
-    console.log(socket.id)
 
-})
-
-httpServer.listen(4000)
 
 
 const express = require('express');
+
 const moment = require('moment-timezone');
 const cors = require("cors");
 const cookieParser = require('cookie-parser');
@@ -36,8 +28,20 @@ const autoLoadRoutes = require('./middleware/AutoLoadRoutes')
 moment.tz.setDefault('Asia/Seoul');
 
 const app = express();
-const port = process.env.PORT || 8000;
+const httpServer = createServer(app)
+const io = new Server(httpServer, {})
 
+io.on("connection", (socket) => {
+
+    console.log('socket 연결')
+    console.log(socket, 'Socket 통신')
+    console.log(socket.id)
+})
+
+httpServer.listen(4000)
+
+
+const port = process.env.PORT || 8000;
 
 app.set('trust proxy', true);
 app.use(cors((req, callback) => {
