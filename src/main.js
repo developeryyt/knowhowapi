@@ -38,7 +38,9 @@ io.on("connection", (socket) => {
     console.log(socket.id)
 })
 
-httpServer.listen(4000)
+httpServer.listen(4000, () => {
+    console.log('Listen.;;;;;;')
+})
 
 
 const port = process.env.PORT || 8000;
