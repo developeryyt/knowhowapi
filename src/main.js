@@ -53,6 +53,7 @@ io.on("connection", (socket) => {
 
     socket.on('sendMessage', (message, roomId) => {
         io.to(roomId).emit('receiveMessage', message)
+        console.log('메세지 내용은', message)
     })
 
 })
