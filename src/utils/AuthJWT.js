@@ -19,6 +19,7 @@ const authJWT = (req, res, next) => {
         return res.status(401).json({ message: '유효하지 않은 토큰입니다.' });
     }
 }
+
 authJWT.optional = function (req, res, next) {
     const token = req.header('boa-authorization')?.split('Bearer ')[1];
 

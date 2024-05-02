@@ -7,6 +7,22 @@ require('dotenv').config({
 console.log('process.env.ENV: ', _envPath);
 console.log('process.env.ENV: ', process.env.NODE_ENV);
 
+
+const { createServer } = require('http');
+const { Server } = require('socket.io')
+
+const httpServer = createServer()
+const io = new Server(httpServer, {})
+
+io.on("connection", (socket) => {
+
+    console.log(socket, 'Socket 통신')
+    console.log('socket 연결')
+
+})
+httpServer.listen(4000)
+
+
 const express = require('express');
 const moment = require('moment-timezone');
 const cors = require("cors");
