@@ -45,6 +45,16 @@ io.on("connection", (socket) => {
     console.log(socket.id)
 
     socket.emit('hello', 'world')
+
+    socket.on('joinRoom', (roomId) => {
+        socket.join(roomId)
+        console.log(`User joined room: ${roomId}`)
+    })
+
+    socket.on('sendMessage', (message, roomId) => {
+        io.to(roomId).emit('receiveMessage', message)
+    })
+
 })
 
 httpServer.listen(4000, () => {
