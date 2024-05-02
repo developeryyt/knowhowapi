@@ -18,8 +18,10 @@ io.on("connection", (socket) => {
 
     console.log(socket, 'Socket 통신')
     console.log('socket 연결')
+    console.log(socket.id)
 
 })
+
 httpServer.listen(4000)
 
 
