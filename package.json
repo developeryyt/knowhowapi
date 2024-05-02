@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./src/main.js",
+    "start": "nodemon ./src/main.js",
     "local:start": "env-cmd -f .env.local nodemon ./src/main.js",
     "dev-start": "env-cmd -f .env.development node ./src/main.js",
     "dev:start": "env-cmd -f .env.development nodemon ./src/main.js",
