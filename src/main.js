@@ -8,8 +8,8 @@ console.log('process.env.ENV: ', _envPath);
 console.log('process.env.ENV: ', process.env.NODE_ENV);
 
 
-const { createServer } = require('http');
-const { Server } = require('socket.io')
+// const { createServer } = require('http');
+// const { Server } = require('socket.io')
 
 
 
@@ -28,39 +28,39 @@ const autoLoadRoutes = require('./middleware/AutoLoadRoutes')
 moment.tz.setDefault('Asia/Seoul');
 
 const app = express();
-const httpServer = createServer(app)
-const io = new Server(httpServer, {
-    cors: {
-        origin: true,
-        allowedHeaders: ['Content-Type', 'Authorization'],
-        methods: ['GET', 'POST'],
-        credentials: true,
-    }
-})
-
-io.on("connection", (socket) => {
-
-    console.log('socket 연결')
-    console.log(socket, 'Socket 통신')
-    console.log(socket.id)
-
-    socket.emit('hello', 'world')
-
-    socket.on('joinRoom', (roomId) => {
-        socket.join(roomId)
-        console.log(`User joined room: ${roomId}`)
-    })
-
-    socket.on('sendMessage', (message, roomId) => {
-        io.to(roomId).emit('receiveMessage', message)
-        console.log('메세지 내용은', message)
-    })
-
-})
-
-httpServer.listen(4000, () => {
-    console.log('Listen;;;;;;;')
-})
+// const httpServer = createServer(app)
+// const io = new Server(httpServer, {
+//     cors: {
+//         origin: true,
+//         allowedHeaders: ['Content-Type', 'Authorization'],
+//         methods: ['GET', 'POST'],
+//         credentials: true,
+//     }
+// })
+//
+// io.on("connection", (socket) => {
+//
+//     console.log('socket 연결')
+//     console.log(socket, 'Socket 통신')
+//     console.log(socket.id)
+//
+//     socket.emit('hello', 'world')
+//
+//     socket.on('joinRoom', (roomId) => {
+//         socket.join(roomId)
+//         console.log(`User joined room: ${roomId}`)
+//     })
+//
+//     socket.on('sendMessage', (message, roomId) => {
+//         io.to(roomId).emit('receiveMessage', message)
+//         console.log('메세지 내용은', message)
+//     })
+//
+// })
+//
+// httpServer.listen(4000, () => {
+//     console.log('Listen;;;;;;;')
+// })
 
 
 const port = process.env.PORT || 8000;
