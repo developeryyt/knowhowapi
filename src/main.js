@@ -7,7 +7,7 @@ require('dotenv').config({
 console.log('process.env.ENV: ', _envPath);
 console.log('process.env.ENV: ', process.env.NODE_ENV);
 
-
+const db = require('./db/models');
 // const { createServer } = require('http');
 // const { Server } = require('socket.io')
 
@@ -28,6 +28,8 @@ const autoLoadRoutes = require('./middleware/AutoLoadRoutes')
 moment.tz.setDefault('Asia/Seoul');
 
 const app = express();
+
+
 // const httpServer = createServer(app)
 // const io = new Server(httpServer, {
 //     cors: {
@@ -37,7 +39,7 @@ const app = express();
 //         credentials: true,
 //     }
 // })
-//
+
 // io.on("connection", (socket) => {
 //
 //     console.log('socket 연결')
@@ -57,7 +59,7 @@ const app = express();
 //     })
 //
 // })
-//
+
 // httpServer.listen(4000, () => {
 //     console.log('Listen;;;;;;;')
 // })

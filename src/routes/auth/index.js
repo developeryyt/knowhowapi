@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
+const createError = require('http-errors');
 
 router.post('/login', async (req, res, next) => {
     const params = await req.body;
-    console.log(params)
+    const { userId, userPw } = params;
+    if(!userId || !userPw) return next(createError(400, 'user_id or user_pw is not exist'));
 
     try {
+
 
     }catch(err) {
 
